@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black_color"
+    android:background="@color/color_white"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
@@ -12,7 +12,7 @@
         android:id="@+id/fl_1st_currency_name"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.5">
+        android:layout_weight="0.2">
 
         <TextView
             android:layout_width="wrap_content"
@@ -22,138 +22,149 @@
             android:elevation="1dp"
             android:fontFamily="sans-serif-condensed"
             android:text="Currency Converter"
-            android:textColor="@color/color_blue"
+            android:textColor="@color/black_color"
             android:textSize="32sp"
             android:textStyle="bold" />
 
     </FrameLayout>
 
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="2"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="top|center_horizontal"
+            android:gravity="center"
             android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/edt_1st_amount"
-                android:layout_width="142dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/rectangle_blue_stroke"
-                android:hint="Amount"
-                android:inputType="number"
-                android:paddingStart="8dp"
-                android:textSize="16sp" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="4dp"
+                    android:text="£"
+                    android:textColor="@color/black_color"
+                    android:textSize="32sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/edt_1st_amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rectangle"
+                    android:hint="100.00"
+                    android:textColor="@color/black_color"
+                    android:textColorHint="@color/color_grey"
+                    android:textSize="32sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:text="To"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:text="------------------"
+                android:textColor="@color/color_grey"
+                android:textSize="32sp" />
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
 
-            <EditText
-                android:id="@+id/edt_2nd_amount"
-                android:layout_width="142dp"
-                android:layout_height="48dp"
-                android:layout_marginBottom="8dp"
-                android:background="@drawable/rectangle_blue_stroke"
-                android:hint="Amount"
-                android:inputType="number"
-                android:paddingStart="8dp"
-                android:textSize="16sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:text="GBP"
+                    android:textColor="@color/black_color"
+                    android:textSize="24sp" />
+
+                <ImageView
+                    android:id="@+id/img_1st_currency"
+                    android:layout_width="24sp"
+                    android:layout_height="24sp"
+                    android:src="@drawable/ic_arrow_down" />
+
+            </LinearLayout>
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="top|center_horizontal"
+            android:gravity="center"
             android:orientation="vertical">
 
-            <FrameLayout
-                android:layout_width="142dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/rectangle_blue_stroke"
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <TextView
-
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|start"
-                    android:layout_marginStart="8dp"
-                    android:text="Myanmar"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
+                    android:layout_marginRight="4dp"
+                    android:text="€"
+                    android:textColor="@color/black_color"
+                    android:textSize="32sp"
                     android:textStyle="bold" />
 
-                <ImageView
-                    android:id="@+id/img_1st_down_arrow"
-                    android:layout_width="16sp"
-                    android:layout_height="16sp"
-                    android:layout_gravity="center_vertical|end"
-                    android:layout_marginEnd="8dp"
-                    android:src="@drawable/ic_arrow_down" />
+                <EditText
+                    android:id="@+id/edt_2nd_amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rectangle"
+                    android:hint="100.00"
+                    android:textColor="@color/black_color"
+                    android:textColorHint="@color/color_grey"
+                    android:textSize="32sp"
+                    android:textStyle="bold" />
 
-            </FrameLayout>
+            </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:text="To"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:text="------------------"
+                android:textColor="@color/color_grey"
+                android:textSize="32sp" />
 
-
-            <FrameLayout
-                android:id="@+id/fl_2nd_currency_name"
-                android:layout_width="142dp"
-                android:layout_height="48dp"
-                android:layout_marginBottom="8dp"
-                android:background="@drawable/rectangle_blue_stroke"
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
                 android:orientation="horizontal">
 
                 <TextView
-
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|start"
-                    android:layout_marginStart="8dp"
-                    android:text="Thai"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:layout_marginRight="8dp"
+                    android:text="EUR"
+                    android:textColor="@color/black_color"
+                    android:textSize="24sp" />
 
                 <ImageView
-                    android:id="@+id/img_2nd_down_arrow"
-                    android:layout_width="16sp"
-                    android:layout_height="16sp"
-                    android:layout_gravity="center_vertical|end"
-                    android:layout_marginEnd="8dp"
+                    android:id="@+id/img_2nd_currency"
+                    android:layout_width="24sp"
+                    android:layout_height="24sp"
                     android:src="@drawable/ic_arrow_down" />
 
-            </FrameLayout>
+            </LinearLayout>
 
         </LinearLayout>
 
     </LinearLayout>
+
 
 </LinearLayout>

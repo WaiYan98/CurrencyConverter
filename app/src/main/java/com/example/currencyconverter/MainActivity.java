@@ -8,6 +8,8 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.currencyconverter.model.CurrencyDialogFragment;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -17,11 +19,11 @@ public class MainActivity extends AppCompatActivity {
     EditText edt1stAmount;
     @BindView(R.id.edt_2nd_amount)
     EditText edt2ndAmount;
-    @BindView(R.id.img_1st_down_arrow)
-    ImageView img1stDownArrow;
-    @BindView(R.id.img_2nd_down_arrow)
-    ImageView img2ndDownArrow;
-
+    @BindView(R.id.img_1st_currency)
+    ImageView img1stCurrency;
+    @BindView(R.id.img_2nd_currency)
+    ImageView img2ndCurrency;
+    private CurrencyDialogFragment cdf;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,12 +32,17 @@ public class MainActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
-        img1stDownArrow.setOnClickListener(v -> {
-            Toast.makeText(this, "this is first block", Toast.LENGTH_SHORT).show();
+        cdf = CurrencyDialogFragment.getNewInstance();
+
+        img1stCurrency.setOnClickListener(v -> {
+
+            cdf.show(getSupportFragmentManager(), "");
+
         });
 
-        img2ndDownArrow.setOnClickListener(v -> {
-            Toast.makeText(this, "this is second block", Toast.LENGTH_SHORT).show();
+        img2ndCurrency.setOnClickListener(v -> {
+
+            cdf.show(getSupportFragmentManager(), "");
 
         });
     }
