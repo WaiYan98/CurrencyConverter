@@ -2,6 +2,8 @@ package com.example.currencyconverter.model;
 
 import android.app.Dialog;
 import android.os.Bundle;
+import android.os.Parcelable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 
@@ -14,12 +16,22 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.airbnb.lottie.L;
 import com.example.currencyconverter.R;
+import com.example.currencyconverter.model2.CurrencyCountry;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Currency;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class CurrencyDialogFragment extends DialogFragment {
+
+    public static final String KEY = "KEY";
+    private List<CurrencyCountry> currencyCountryList;
 
     @BindView(R.id.recy_currencies)
     RecyclerView recyCurrencies;
@@ -37,6 +49,12 @@ public class CurrencyDialogFragment extends DialogFragment {
 
         ButterKnife.bind(this, view);
 
+        Bundle bundle = getArguments();
+
+        if (bundle != null) {
+            currencyCountryList = bundle.getParcelableArrayList(KEY);
+        }
+
         CurrenciesRecycleViewAdapter currRecy = new CurrenciesRecycleViewAdapter();
         recyCurrencies.setAdapter(currRecy);
         recyCurrencies.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -50,16 +68,20 @@ public class CurrencyDialogFragment extends DialogFragment {
 
         dialog.getWindow().setBackgroundDrawableResource(R.drawable.rounded_rectangle_light_white);
 
+        Log.d("tag", "onCreateDialog: " + currencyCountryList);
+
         return dialog;
 
     }
 
-    public static CurrencyDialogFragment getNewInstance() {
+    public static CurrencyDialogFragment getNewInstance(String key, List<CurrencyCountry> currencyCountryList) {
+
+        ArrayList<CurrencyCountry> arrayList = new ArrayList<>(currencyCountryList);
 
         CurrencyDialogFragment cdf = new CurrencyDialogFragment();
-
         Bundle bundle = new Bundle();
-
+        bundle.putParcelableArrayList(key, arrayList);
+        cdf.setArguments(bundle);
         return cdf;
     }
 }

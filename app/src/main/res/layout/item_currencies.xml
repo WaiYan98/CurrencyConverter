@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="8dp">
+    android:padding="16dp">
 
     <TextView
         android:layout_width="wrap_content"
@@ -11,14 +11,15 @@
         android:layout_marginEnd="16dp"
         android:text="GBP"
         android:textColor="@color/black"
-        android:textSize="22sp"
+        android:textSize="20sp"
         android:textStyle="bold" />
 
     <TextView
+        android:id="@+id/txt_currency_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="British Pound"
         android:textColor="@color/black"
-        android:textSize="22sp" />
+        android:textSize="20sp" />
 
 </LinearLayout>

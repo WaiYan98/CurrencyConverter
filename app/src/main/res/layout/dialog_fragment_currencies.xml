@@ -12,6 +12,7 @@
         android:padding="8dp">
 
         <ImageView
+            android:id="@+id/img_back_key"
             android:layout_width="28dp"
             android:layout_height="28dp"
             android:layout_gravity="start|center_vertical"
@@ -29,8 +30,9 @@
     </FrameLayout>
 
     <AutoCompleteTextView
+        android:id="@+id/act_search"
         android:layout_width="336dp"
-        android:layout_height="40dp"
+        android:layout_height="46dp"
         android:layout_gravity="center"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
@@ -38,7 +40,9 @@
         android:drawableStart="@drawable/ic_search"
         android:gravity="center_vertical|start"
         android:hint="Search"
+        android:textSize="16sp"
         android:padding="8dp"
+        android:textColor="@color/black"
         android:textColorHint="@color/light_grey" />
 
     <TextView
