@@ -1,7 +1,9 @@
 package com.example.currencyconverter;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,24 +13,24 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.airbnb.lottie.LottieAnimationView;
+import com.example.currencyconverter.model.CurrenciesRecycleViewAdapter;
 import com.example.currencyconverter.model.CurrencyDialogFragment;
-import com.example.currencyconverter.model2.CurrencyCountriesData;
+import com.example.currencyconverter.model2.CurrencyCountry;
 import com.example.currencyconverter.util.InitList;
+import com.example.currencyconverter.util.SortingNames;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements CurrenciesRecycleViewAdapter.CallBack {
 
     @BindView(R.id.txt_1st_symbol)
     TextView txt1stSymbol;
@@ -50,9 +52,11 @@ public class MainActivity extends AppCompatActivity {
     LinearLayout llView;
     @BindView(R.id.lottie_loading)
     LottieAnimationView lottieLoading;
-    private CurrencyDialogFragment cdf;
     private InitList initList;
+    private boolean btn;
+    private List<CurrencyCountry> currencyCountryList;
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,21 +88,40 @@ public class MainActivity extends AppCompatActivity {
                     llView.setVisibility(View.VISIBLE);
 
                     initList.initList(currencyCountriesData.getResults());
-                    cdf = CurrencyDialogFragment.getNewInstance(CurrencyDialogFragment.KEY, initList.getCurrencyCountryList());
+                    currencyCountryList = SortingNames.sorting(initList.getCurrencyCountryList());
 
                 }, error -> Log.d("tag", "onCreate: " + error.getMessage()));
 
 
         img1stCurrency.setOnClickListener(v -> {
-
-            cdf.show(getSupportFragmentManager(), "");
-
+            btn = true;
+            showDialog();
         });
 
         img2ndCurrency.setOnClickListener(v -> {
-
-            cdf.show(getSupportFragmentManager(), "");
-
+            btn = false;
+            showDialog();
         });
+    }
+
+
+    @Override
+    public void onClickFirst(String currId, String currSymbol) {
+        txt1stCurrencyName.setText(currId);
+        txt1stSymbol.setText(currSymbol);
+    }
+
+    @Override
+    public void onClickSecond(String currId, String currSymbol) {
+        txt2ndCurrencyName.setText(currId);
+        txt2ndSymbol.setText(currSymbol);
+    }
+
+    //To show Dialog Fragment
+    public void showDialog() {
+
+        CurrencyDialogFragment cdf = CurrencyDialogFragment.getNewInstance(CurrencyDialogFragment.KEY1, btn,
+                CurrencyDialogFragment.KEY2, currencyCountryList);
+        cdf.show(getSupportFragmentManager(), "");
     }
 }

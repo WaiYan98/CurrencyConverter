@@ -114,6 +114,8 @@
                         android:id="@+id/img_1st_currency"
                         android:layout_width="24sp"
                         android:layout_height="24sp"
+                        android:clickable="true"
+                        android:foreground="?selectableItemBackgroundBorderless"
                         android:src="@drawable/ic_arrow_down" />
 
                 </LinearLayout>
@@ -183,6 +185,8 @@
                         android:id="@+id/img_2nd_currency"
                         android:layout_width="24sp"
                         android:layout_height="24sp"
+                        android:clickable="true"
+                        android:foreground="?selectableItemBackgroundBorderless"
                         android:src="@drawable/ic_arrow_down" />
 
                 </LinearLayout>

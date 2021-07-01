@@ -17,7 +17,9 @@
             android:layout_height="28dp"
             android:layout_gravity="start|center_vertical"
             android:layout_marginLeft="8dp"
-            android:src="@drawable/ic_back_arrow" />
+            android:src="@drawable/ic_back_arrow"
+            android:clickable="true"
+            android:foreground="?selectableItemBackgroundBorderless"/>
 
         <TextView
             android:layout_width="wrap_content"
